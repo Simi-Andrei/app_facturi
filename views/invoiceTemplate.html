@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <title>{{nrSerieFactura}}</title>
+
+    <style type="text/css">
+      @page {
+        margin: 0px;
+      }
+      body {
+        margin: 0px;
+      }
+      * {
+        font-family: Verdana, Arial, sans-serif;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      table {
+        font-size: x-small;
+      }
+      tfoot tr td {
+        font-weight: bold;
+        font-size: x-small;
+      }
+      .invoice table thead {
+        padding: 10px;
+      }
+      .invoice h3 {
+        margin-left: 15px;
+      }
+      .information {
+        background-color: #0c4a6e;
+        color: #fff;
+        width: 100%;
+      }
+      .information .logo {
+        margin: 5px;
+      }
+      .information table {
+        padding: 10px;
+      }
+      .companyName {
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="information">
+        <table width="100%">
+          <tr>
+            <td align="left" style="width: 40%">
+              <h3 class="companyName">{{settingsName}}</h3>
+              <p>{{settingsLocation}}</p>
+              <p>Date: {{emitDate}}</p>
+              <p>Status: {{status}}</p>
+            </td>
+            <td style="text-align: center">
+              <img
+                src="../imgs/bosLogo.png"
+                alt="Logo"
+                width="200"
+                class="logo"
+              />
+            </td>
+            <td style="width: 40%; text-align: right">
+              <h3>{{clientName}}</h3>
+              <p>{{clientLocation}}</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="invoice" style="padding: 10px">
+        <h3>{{nrSerieFactura}}</h3>
+        <table width="100%" style="margin-top: 30px; font-size: 0.8rem">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 10px">Descriere</th>
+              <th style="text-align: left; padding: 10px">Cantitate</th>
+              <th style="text-align: left; padding: 10px">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{productsTable}}
+          </tbody>
+        </table>
+      </div>
+
+      <div style="position: absolute; bottom: 60px; right: 60px">
+        <p style="font-size: 1rem">
+          Total:
+          <strong style="font-size: 0.8rem">{{totalValue}}  {{currency}}</strong>
+        </p>
+      </div>
+
+      <div
+        class="information"
+        style="position: absolute; bottom: 0; height: 38px"
+      >
+        <table width="100%">
+          <tr>
+            <td style="text-align: center; width: 50%">
+              &copy; invosys - All rights
+              reserved.
+            </td>
+            <td style="text-align: center; width: 50%">SimPra Inc.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
