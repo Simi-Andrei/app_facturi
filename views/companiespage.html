@@ -26,19 +26,19 @@
       <table class="cursor-default text-neutral-900 mb-1">
         <thead class="bg-orange-600 border-b text-neutral-50 text-xs">
           <tr>
-            <th scope="col" class="px-2 py-2 text-left">Nume client</th>
-            <th scope="col" class="px-2 py-2 text-left">CUI</th>
-            <th scope="col" class="px-2 py-2 text-left">Nr. reg. com.</th>
-            <th scope="col" class="px-2 py-2 text-left hidden lg:table-cell">
+            <th scope="col" class="px-2 py-2 text-center">Nume client</th>
+            <th scope="col" class="px-2 py-2 text-center">CUI</th>
+            <th scope="col" class="px-2 py-2 text-center">Nr. reg. com.</th>
+            <th scope="col" class="px-2 py-2 text-center hidden lg:table-cell">
               Judet
             </th>
-            <th scope="col" class="px-2 py-2 text-left hidden lg:table-cell">
+            <th scope="col" class="px-2 py-2 text-center hidden lg:table-cell">
               Pers. contact
             </th>
-            <th scope="col" class="px-2 py-2 text-left hidden lg:table-cell">
+            <th scope="col" class="px-2 py-2 text-center hidden lg:table-cell">
               Agent asignat
             </th>
-            <th scope="col" class="px-2 py-2 text-left hidden lg:table-cell">
+            <th scope="col" class="px-2 py-2 text-center hidden lg:table-cell">
               Edit
             </th>
             <th scope="col" class="px-2 py-2 text-center">Delete</th>
@@ -218,3 +218,70 @@
     </div>
   </div>
 </div>
+<script>
+  const wrapper = document.querySelector(".wrapper");
+  const selectBtn = document.querySelector(".select-btn");
+  const content = document.querySelector(".content");
+  const chevronDown = document.querySelector(".select-btn i");
+  options = wrapper.querySelector(".options");
+  const searchInput = document.querySelector(".search input");
+
+  let clients = [
+    "McDonald's",
+    "ASUS",
+    "Durex",
+    "Diana Shopping",
+    "BMW",
+    "VooPoo",
+    "Simpra",
+    "Simi Sefu",
+  ];
+
+  function addClient(selectedClient) {
+    options.innerHTML = "";
+    clients.forEach((client) => {
+      let isSelected = client == selectedClient ? "selected" : "";
+      let li = `<li onClick="updateName(this)" class="bg-white rounded-md hover:bg-neutral-100 cursor-pointer p-2 ${isSelected}">${client}</li>`;
+      options.insertAdjacentHTML("beforeend", li);
+    });
+  }
+
+  addClient();
+
+  function updateName(selectedLi) {
+    searchInput.value = "";
+    addClient(selectedLi.innerText);
+    selectBtn.firstElementChild.innerText = selectedLi.innerText;
+    content.classList.add("hidden");
+    chevronDown.style = "transform: rotate(0)";
+    wrapper.classList.remove("active");
+  }
+
+  searchInput.addEventListener("keyup", () => {
+    let arr = [];
+    let searchedValue = searchInput.value.toLowerCase();
+    arr = clients
+      .filter((data) => {
+        return data.toLowerCase().includes(searchedValue);
+      })
+      .map(
+        (data) =>
+          `<li onClick="updateName(this)" class="bg-white rounded-md hover:bg-neutral-100 cursor-pointer p-2">${data}</li>`
+      )
+      .join("");
+    options.innerHTML = arr
+      ? arr
+      : `<p class="p-2 bg-red-100 rounded-md opacity-50">Nu s-a gasit niciun client</p>`;
+  });
+
+  selectBtn.addEventListener("click", () => {
+    wrapper.classList.toggle("active");
+    if (wrapper.classList.contains("active")) {
+      content.classList.remove("hidden");
+      chevronDown.style = "transform: rotate(-180deg)";
+    } else {
+      content.classList.add("hidden");
+      chevronDown.style = "transform: rotate(0)";
+    }
+  });
+</script>

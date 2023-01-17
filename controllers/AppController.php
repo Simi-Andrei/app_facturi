@@ -17,7 +17,12 @@ class AppController
                             'delUser' => 'DeleteUserController',
                             'addClient' => 'AddClientController',
                             'test' => 'RewInvController',
-                            'addSetting' => 'AddSettingsController'
+                            'addSetting' => 'AddSettingsController',
+                            'editInvoiceForm' => 'EditInvoiceFormController',
+                            'editClientForm' => 'EditClientFormController',
+                            'editInvoice' => 'EditInvoiceController',
+                            'editClient' => 'EditClientController'
+                            
                         ];
 
     public function __construct(){
