@@ -238,7 +238,7 @@
               Aplica</button
             ><button
               type="button"
-              class="border rounded-md py-1 px-2 text-orange-400 text-sm font-semibold border-orange-600 hover:bg-orange-100 transition-all duration-150"
+              class="border rounded-md py-1 px-2 text-sky-900 text-sm font-semibold border-orange-600 hover:bg-orange-100 transition-all duration-150"
             >
               Reseteaza
             </button>
@@ -438,6 +438,35 @@
                         </h2>
                       </div>
                       <div class="flex flex-wrap">
+                        <div
+                          class="w-full wrapper inline-block flex flex-col items-start justify-center p-2"
+                        >
+                          <div
+                            class="select-btn w-full p-2 cursor-pointer flex items-center justify-between bg-white rounded-md"
+                          >
+                            <span>Select Client</span>
+                            <i
+                              class="transition-all duration-300 fa-solid fa-chevron-down"
+                            ></i>
+                          </div>
+                          <div
+                            class="content hidden p-2 w-full bg-white rounded-md mt-1"
+                          >
+                            <div class="search relative">
+                              <i
+                                class="fa-sharp fa-solid fa-magnifying-glass absolute top-2 left-2 text-neutral-500"
+                              ></i>
+                              <input
+                                type="text"
+                                placeholder="Search"
+                                class="w-full border border-neutral-200 py-1 px-8 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic rounded-md"
+                              />
+                            </div>
+                            <ul
+                              class="options p-2 mt-1 max-h-64 overflow-y-auto"
+                            ></ul>
+                          </div>
+                        </div>
                         <div
                           class="inline-block w-full lg:w-1/2 flex flex-col items-start justify-center p-2"
                         >
@@ -802,6 +831,73 @@
       const filtersContainer = document.querySelector("#filtersContainer");
       filterBtn.addEventListener("click", () => {
         filtersContainer.classList.toggle("hidden");
+      });
+    </script>
+    <script>
+      const wrapper = document.querySelector(".wrapper");
+      const selectBtn = document.querySelector(".select-btn");
+      const content = document.querySelector(".content");
+      const chevronDown = document.querySelector(".select-btn i");
+      options = wrapper.querySelector(".options");
+      const searchInput = document.querySelector(".search input");
+
+      let clients = [
+        "McDonald's",
+        "ASUS",
+        "Durex",
+        "Diana Shopping",
+        "BMW",
+        "VooPoo",
+        "Simpra",
+        "Simi Sefu",
+      ];
+
+      function addClient(selectedClient) {
+        options.innerHTML = "";
+        clients.forEach((client) => {
+          let isSelected = client == selectedClient ? "selected" : "";
+          let li = `<li onClick="updateName(this)" class="bg-white rounded-md hover:bg-neutral-100 cursor-pointer p-2 ${isSelected}">${client}</li>`;
+          options.insertAdjacentHTML("beforeend", li);
+        });
+      }
+
+      addClient();
+
+      function updateName(selectedLi) {
+        searchInput.value = "";
+        addClient(selectedLi.innerText);
+        selectBtn.firstElementChild.innerText = selectedLi.innerText;
+        content.classList.add("hidden");
+        chevronDown.style = "transform: rotate(0)";
+        wrapper.classList.remove("active");
+      }
+
+      searchInput.addEventListener("keyup", () => {
+        let arr = [];
+        let searchedValue = searchInput.value.toLowerCase();
+        arr = clients
+          .filter((data) => {
+            return data.toLowerCase().startsWith(searchedValue);
+          })
+          .map(
+            (data) =>
+              `<li onClick="updateName(this)" class="bg-white rounded-md hover:bg-neutral-100 cursor-pointer p-2">${data}</li>`
+          )
+          .join("");
+        options.innerHTML = arr
+          ? arr
+          : `<p class="p-2 bg-red-100 rounded-md opacity-50">Nu s-a gasit niciun client</p>`;
+      });
+
+      selectBtn.addEventListener("click", () => {
+        wrapper.classList.toggle("active");
+        if (wrapper.classList.contains("active")) {
+          content.classList.remove("hidden");
+          chevronDown.style = "transform: rotate(-180deg)";
+        } else {
+          content.classList.add("hidden");
+          chevronDown.style = "transform: rotate(0)";
+        }
       });
     </script>
   </body>
