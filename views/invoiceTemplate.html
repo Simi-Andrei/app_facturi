@@ -2,120 +2,229 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    />
     <title>{{nrSerieFactura}}</title>
-
     <style type="text/css">
       @page {
-        margin: 0px;
+        size: A4;
       }
+
       body {
         margin: 0px;
       }
-      * {
-        font-family: Verdana, Arial, sans-serif;
+
+      .content {
+        border: 1px solid black;
       }
-      a {
-        color: #fff;
-        text-decoration: none;
+      .headerContainer {
+        display: flex;
+        font-size: 0.8rem;
       }
-      table {
-        font-size: x-small;
+      .tableContainer table {
+        border: 1px solid black;
+        border-collapse: collapse;
       }
-      tfoot tr td {
-        font-weight: bold;
-        font-size: x-small;
+      table tbody tr td {
+        font-size: 0.8rem;
       }
-      .invoice table thead {
-        padding: 10px;
+      .tableContainer {
+        margin-top: 20px;
       }
-      .invoice h3 {
-        margin-left: 15px;
-      }
-      .information {
-        background-color: #0c4a6e;
-        color: #fff;
-        width: 100%;
-      }
-      .information .logo {
-        margin: 5px;
-      }
-      .information table {
-        padding: 10px;
-      }
-      .companyName {
-        font-size: 1.5rem;
-        font-style: italic;
-        font-weight: bold;
+      .tableContainer table {
+        font-size: 0.8rem;
       }
     </style>
   </head>
   <body>
     <div>
-      <div class="information">
-        <table width="100%">
-          <tr>
-            <td align="left" style="width: 40%">
-              <h3 class="companyName">{{settingsName}}</h3>
-              <p>{{settingsLocation}}</p>
-              <p>Date: {{emitDate}}</p>
-              <p>Status: {{status}}</p>
-            </td>
-            <td style="text-align: center">
-              <img
-                src="../imgs/bosLogo.png"
-                alt="Logo"
-                width="200"
-                class="logo"
-              />
-            </td>
-            <td style="width: 40%; text-align: right">
-              <h3>{{clientName}}</h3>
-              <p>{{clientLocation}}</p>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="invoice" style="padding: 10px">
-        <h3>{{nrSerieFactura}}</h3>
-        <table width="100%" style="margin-top: 30px; font-size: 0.8rem">
-          <thead>
-            <tr>
-              <th style="text-align: left; padding: 10px">Descriere</th>
-              <th style="text-align: left; padding: 10px">Cantitate</th>
-              <th style="text-align: left; padding: 10px">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{productsTable}}
-          </tbody>
-        </table>
-      </div>
+      <div class="content">
+        <div class="headerContainer">
+          <table>
+            <tbody>
+              <tr>
+                <td style="width: 30%; padding: 0 10px">
+                  <div class="seller">
+                    <p style="margin: 4px 0">
+                      <strong>Furnizor: </strong>BUSINESS OUTSOURCING SOLUTONS
+                      S.R.L. <strong>CIF: </strong>RO35723388
+                    </p>
 
-      <div style="position: absolute; bottom: 60px; right: 60px">
-        <p style="font-size: 1rem">
-          Total:
-          <strong style="font-size: 0.8rem">{{totalValue}}  {{currency}}</strong>
-        </p>
-      </div>
+                    <p style="margin: 4px 0">
+                      <strong>Nr ord reg com: </strong>J40/2907/2016
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Sediu: </strong>Str. Nucului, Nr. 51, Sector 3
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Judet: </strong>Bucuresti
+                    </p>
+                    <span p style="margin: 4px 0"
+                      ><strong>Cont: </strong>RO32 RZBR 0000 0600 1844
+                      0293</span
+                    >
+                    <p style="margin: 4px 0">
+                      <strong>Banca: </strong>Raiffeissen Bank
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Capital social: </strong>200
+                    </p>
+                  </div>
+                </td>
+                <td style="width: 30%; padding: 0 10px">
+                  <div class="company-logo">
+                    <img
+                      src="../imgs/logo.png"
+                      alt="companyLogo"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+                <td style="width: 30%; padding: 0 10px">
+                  <div class="buyer">
+                    <p style="margin: 4px 0">
+                      <strong>Cumparator: </strong>PPG ROMANIA S.A.
+                    </p>
+                    <p style="margin: 4px 0"><strong>CIF: </strong>RO3540951</p>
+                    <p style="margin: 4px 0">
+                      <strong>Nr ord reg com: </strong>J40/2907/2016
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Sediu: </strong>Str. Nucului, Nr. 51, Sector 3
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Judet: </strong>Bucuresti
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Cont: </strong>RO32 RZBR 0000 0600 1844 0293
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Banca: </strong>Raiffeissen Bank
+                    </p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 30%"></td>
+                <td style="width: 30%; text-align: center; padding: 0 10px">
+                  FACTURA FISCALA
+                </td>
+                <td style="width: 30%"></td>
+              </tr>
+              <tr>
+                <td style="width: 30%"></td>
+                <td style="width: 30%; text-align: center; padding: 0 10px">
+                  <p>SERIE SI NR: <strong>BOS 003256</strong></p>
+                  <p>DATA (zi-luna-an): <strong>23-12-1742</strong></p>
+                  <p>
+                    Scadenta la:
+                    <strong>28-12-1742</strong>
+                  </p>
+                </td>
 
-      <div
-        class="information"
-        style="position: absolute; bottom: 0; height: 38px"
-      >
-        <table width="100%">
-          <tr>
-            <td style="text-align: center; width: 50%">
-              &copy; invosys - All rights
-              reserved.
-            </td>
-            <td style="text-align: center; width: 50%">SimPra Inc.</td>
-          </tr>
-        </table>
+                <td style="width: 30%"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tableContainer">
+          <table border>
+            <thead>
+              <tr>
+                <th style="text-align: center">Nr. Crt.</th>
+                <th style="text-align: center">
+                  Denumirea produselor sau a serviciilor
+                </th>
+                <th style="text-align: center">U.M.</th>
+                <th style="text-align: center">Cantitatea</th>
+                <th style="text-align: center">
+                  Pretul unitar (fara T.V.A.) RON
+                </th>
+                <th style="text-align: center">Valoarea RON</th>
+                <th style="text-align: center">Valoarea T.V.A. RON</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: center">0</td>
+                <td style="text-align: center">1</td>
+                <td style="text-align: center">2</td>
+                <td style="text-align: center">3</td>
+                <td style="text-align: center">4</td>
+                <td style="text-align: center">5(3x4)</td>
+                <td style="text-align: center">6</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0"></td>
+                <td style="padding: 8px 0"></td>
+                <td style="padding: 8px 0"></td>
+                <td style="padding: 8px 0"></td>
+                <td style="padding: 8px 0"></td>
+                <td style="padding: 8px 0"></td>
+                <td style="padding: 8px 0"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center">1.</td>
+                <td style="text-align: center">
+                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
+                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
+                </td>
+                <td style="text-align: center">buc.</td>
+                <td style="text-align: center">1.00</td>
+                <td style="text-align: center">289.066,72</td>
+                <td style="text-align: center">289.066,72</td>
+                <td style="text-align: center">54.922,68</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td
+                  rowspan="2"
+                  colspan="2"
+                  style="padding: 20px 0; padding: 5px"
+                >
+                  Semnatura si stampila furnizorului:
+                </td>
+                <td
+                  rowspan="2"
+                  colspan="2"
+                  style="padding: 20px 0; padding: 5px"
+                >
+                  Semnatura de primire
+                </td>
+                <td style="padding: 10px 0; padding: 5px">TOTAL:</td>
+                <td style="padding: 10px 0; padding: 5px; text-align: center">
+                  349.967,15
+                </td>
+                <td style="padding: 10px 0; padding: 5px; text-align: center">
+                  66.493,76
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; padding: 5px">
+                  <strong>TOTAL GENERAL:</strong>
+                </td>
+                <td
+                  colspan="2"
+                  style="padding: 10px 0; padding: 5px; text-align: center"
+                >
+                  <strong>416.460,91</strong>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div
+          style="
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin: 0 auto;
+          "
+        >
+          <p style="text-align: center; font-size: 0.8rem">
+            Simpra | invosys | &copy; All rights reserved
+          </p>
+        </div>
       </div>
     </div>
   </body>
