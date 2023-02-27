@@ -14,7 +14,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
+      href="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-alpha12/dist/css/index.min.css"
     />
     <link
       rel="stylesheet"
@@ -23,8 +23,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>invosys</title>
+    <script defer src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+    <script defer src="https://cdn.tailwindcss.com/3.2.6"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"
+    ></script>
+
+    <title>App Facturare</title>
     <style>
       ul li a.active {
         color: #ea580c;
@@ -35,6 +41,7 @@
     <div class="w-100 flex flex-col justify-between min-h-screen">
       <nav
         class="relative top-0 w-full flex flex-wrap items-center justify-between bg-sky-900 text-neutral-50 shadow-sm navbar navbar-expand-md z-10"
+        data-te-navbar-ref
       >
         <div
           class="flex items-center justify-end container mx-auto flex flex-wrap items-center justify-between py-4 px-2"
@@ -43,108 +50,89 @@
             >invo<span class="text-orange-600">sys</span></a
           >
           <button
-            class="navbar-toggler px-3 ml-auto hover:text-orange-600 transition-all duration-200"
+            class="block border-0 bg-transparent text-white py-2 px-2.5 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
+            data-te-collapse-init
+            data-te-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <i class="fa fa-bars text-lg" aria-hidden="true"></i>
           </button>
-
           <div
-            class="collapse navbar-collapse flex-grow items-center"
+            class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
             id="navbarSupportedContent"
+            data-te-collapse-item
           >
             <!-- Left links -->
             <ul
               id="navLinks"
-              class="navbar-nav flex flex-col list-style-none ml-auto text-right pr-3 lg:pr-0 mt-4 lg:mt-0"
+              class="navbar-nav flex flex-col list-style-none ml-auto text-right pr-3 lg:pr-0 mt-4 lg:mt-0 lg:flex-row"
+              data-te-navbar-nav-ref
             >
-              <li class="nav-item my-1 lg:my-0">
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
+                <a
+                  class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
+                  aria-current="page"
+                  data-te-nav-link-ref
+                  href="?page=logout"
+                  >{{userName}}</a
+                >
+              </li>
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
                 <a
                   class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
                   aria-current="page"
                   href="./?page=home"
+                  data-te-nav-link-ref
                   >Acasa</a
                 >
               </li>
-              <li class="nav-item my-1 lg:my-0">
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
                 <a
                   class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
+                  aria-current="page"
                   href="?page=costs"
+                  data-te-nav-link-ref
                   >Cheltuieli</a
                 >
               </li>
-              <li class="nav-item my-1 lg:my-0">
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
                 <a
                   class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
+                  aria-current="page"
                   href="?page=invoices"
+                  data-te-nav-link-ref
                   >Facturi emise</a
                 >
               </li>
-              <li class="nav-item my-1 lg:my-0">
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
                 <a
                   class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
+                  aria-current="page"
                   href="?page=clients"
+                  data-te-nav-link-ref
                   >Clienti</a
                 >
               </li>
-              <li class="nav-item my-1 lg:my-0">
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
                 <a
                   class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
+                  aria-current="page"
                   href="?page=users"
+                  data-te-nav-link-ref
                   >Utilizatori</a
                 >
               </li>
-              <li class="nav-item my-1 lg:my-0">
+              <li class="nav-item my-1 lg:my-0 lg:ml-4" data-te-nav-item-ref>
                 <a
                   class="nav-link hover:text-orange-600 focus:text-orange-600 font-semibold text-sm transition-all duration-200"
+                  aria-current="page"
                   href="?page=settings"
+                  data-te-nav-link-ref
                   >Setari</a
                 >
-              </li>
-              <li>
-                <div class="dropdown relative">
-                  <a
-                    class="nav-link font-semibold text-sm transition-all duration-200"
-                    href="/"
-                    id="dropdownMenuButton1"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    UserName
-                  </a>
-                  <ul
-                    class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-4 hidden m-0 bg-clip-padding border-none left-auto right-0"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li>
-                      <a
-                        class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                        href="#"
-                        >Action</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                        href="#"
-                        >Another action</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                        href="#"
-                        >Something else here</a
-                      >
-                    </li>
-                  </ul>
-                </div>
               </li>
             </ul>
             <!-- Left links -->
@@ -161,7 +149,7 @@
         <p>Business Outsourcing Solutions &copy; | All Rights Reserved</p>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements@1.0.0-alpha12/dist/js/index.min.js"></script>
     <script>
       const activePage = window.location.href;
       const navLinks = document

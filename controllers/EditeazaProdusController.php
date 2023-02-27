@@ -1,6 +1,6 @@
 <?php
 
-class EditClientFormController extends AppController
+class EditeazaProdusController extends AppController
 {
     public function __construct()
     {
@@ -19,11 +19,10 @@ class EditClientFormController extends AppController
             header("Location: ?page=home");
         }
 
-        $data['test'] = $_GET['id'];
+       $content["content"] = $this->render(APP_PATH.VIEWS.'editeazaProdusPage.html',$data);
+       echo $this->render(APP_PATH.VIEWS.'boilerplate.html',$content);
 
-
-        $content["content"] = $this->render(APP_PATH . VIEWS . 'editClientPage.html', $data);
-        echo $this->render(APP_PATH . VIEWS . 'boilerplate.html', $content);
+       
 }
 
 }

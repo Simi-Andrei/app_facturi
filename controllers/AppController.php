@@ -6,6 +6,8 @@ class AppController
     protected $routes = [
                             'home' => 'HomeNAuthController',
                             'login' => 'LoginController',
+                            'authenticate' => 'AuthController',
+                            'logout' => 'LogoutController',
                             'users' => 'ShowUsersController',
                             'invoices' => 'ShowInvoicesController',
                             'clients' => 'ShowClientsController',
@@ -16,12 +18,15 @@ class AppController
                             'addUser' => 'AddUserController',
                             'delUser' => 'DeleteUserController',
                             'addClient' => 'AddClientController',
-                            'test' => 'RewInvController',
+                            'test' => 'ShowTestPageController',
                             'addSetting' => 'AddSettingsController',
                             'editInvoiceForm' => 'EditInvoiceFormController',
                             'editClientForm' => 'EditClientFormController',
                             'editInvoice' => 'EditInvoiceController',
-                            'editClient' => 'EditClientController'
+                            'editPayment'=> 'EditPaymentController',
+                            'editClient' => 'EditClientController',
+                            'delClient' => 'DeleteClientController',
+                            'editeazaProdus' => 'EditeazaProdusController',
                             
                         ];
 
@@ -36,14 +41,14 @@ class AppController
             $page = $_GET['page'];
         }
         else {
-            $page = 'home';
+            $page = 'login';
         }
 
         if(array_key_exists($page, $this->routes)){
             $className = $this->routes[$page];
         }
         else {
-            $className = $this->routes['home'];
+            $className = $this->routes['login'];
         }
         new $className;
     }

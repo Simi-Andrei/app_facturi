@@ -1,5 +1,5 @@
 <div>
-  <div class="flex justify-between items-center my-4 px-2">
+  <div class="flex justify-between items-center my-4 px-2 relative">
     <h1 class="text-lg font-semibold text-neutral-500 cursor-default">Users</h1>
     <button
       class="border rounded-md py-1 px-2 bg-sky-900 text-neutral-50 text-sm font-semibold border-sky-900 hover:text-orange-600 transition-all duration-150"
@@ -8,6 +8,12 @@
     >
       Add user
     </button>
+    <div class="bg-red-100 absolute -top-4 left-1/2 -translate-x-1/2">
+      <p>Success!</p>
+    </div>
+    <div class="bg-red-100 absolute top-4 left-1/2 -translate-x-1/2">
+      <p>Error!</p>
+    </div>
   </div>
   <div class="bg-sky-900 rounded-md">
     <div class="py-4 pl-2">

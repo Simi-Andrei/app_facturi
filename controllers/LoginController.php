@@ -11,20 +11,27 @@ class LoginController extends AppController
     {
 
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        // $username = $_POST['username'];
+        // $password = $_POST['password'];
 
-        $user = new UsersModel;
+        // $user = new UsersModel;
 
-        if ($user->isAuth($username, $password)) {
-            $data["content"] = $this->render(APP_PATH . VIEWS . 'homepage.html');
-            session_start();
-            $_SESSION["userName"] = $username;
+        // $data["username"] = $username;
+        // $data["password"] = $password;
 
-            echo $this->render(APP_PATH . VIEWS . 'boilerplate.html', $data);
-        } else {
-            $data["mesaj"] = "ai gresit user/pass, incearca din nou";
-            echo $this->render(APP_PATH . VIEWS . 'failedloginpage.html', $data);
-        }
+        echo $this->render(APP_PATH . VIEWS . 'loginpage.html');
+
+        // if ($user->isAuth($username, $password)) {
+        //     $data["content"] = $this->render(APP_PATH . VIEWS . 'homepage.html');
+        //     session_start();
+        //     $_SESSION["userName"] = $username;
+
+        //     echo $this->render(APP_PATH . VIEWS . 'boilerplate.html', $data);
+        // } else {
+        //     $data["mesaj"] = "ai gresit user/pass, incearca din nou";
+        //     echo $this->render(APP_PATH . VIEWS . 'failedloginpage.html', $data);
+        // }
+
+
     }
 }

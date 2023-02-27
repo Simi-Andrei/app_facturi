@@ -13,10 +13,10 @@ class ItemsModel extends DBModel
     }
 
 
-    public function addItem($description, $invoiceID, $unitPrice, $quantity){
-        $q="INSERT INTO `items`(`description`,`invoiceID`, `unitPrice`, `quantity`) VALUES (?,?,?,?);";
+    public function addItem($description, $invoiceID, $unitPrice, $vat, $quantity){
+        $q="INSERT INTO `items`(`description`,`invoiceID`, `unitPrice`, `vat`, `quantity`) VALUES (?,?,?,?,?);";
         $myPrep = $this->db()-> prepare($q);
-        $myPrep->bind_param("siii", $description, $invoiceID, $unitPrice, $quantity);
+        $myPrep->bind_param("siiii", $description, $invoiceID, $unitPrice, $vat, $quantity);
         return $myPrep->execute();
     }
 

@@ -32,4 +32,17 @@ class ClientsModel extends DBModel
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function delClient($id){
+        $q = "DELETE FROM `clients` WHERE `id` = $id";
+		$result = $this->db()->query($q);
+        if($result) return true;
+        else return false;
+    }
+
+    public function lastClientID(){
+        $q = "SELECT `id` FROM `clients` ORDER BY `id` DESC LIMIT 1";
+        $result = $this->db()->query($q);
+        return $result->fetch_all();
+    }
+
 }

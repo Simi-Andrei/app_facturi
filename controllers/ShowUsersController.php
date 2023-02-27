@@ -10,6 +10,16 @@ class ShowUsersController extends AppController
     public function init()
     {
 
+
+      session_start();
+
+      if(isset($_SESSION['userName'])){
+        $content['userName'] = $_SESSION['userName'];
+    } else {
+      header("Location: ?page=login");
+    }
+    
+      
         $user = new UsersModel;
 
         $result = $user->showUsers();
@@ -27,8 +37,8 @@ class ShowUsersController extends AppController
                 $data["usersTableContent"] .= "<tr class=' hover:bg-sky-200 bg-white even:bg-sky-50 border-b mx-20 text-neutral-900 hover:bg-sky-200'>
                 <td class='px-6 py-2 whitespace-nowrap text-center'>" . $user['name'] . "</td>
                 <td class='px-6 py-2 whitespace-nowrap text-center'>" . $user['phone'] . "</td>
-                <td class='px-6 py-2 whitespace-nowrap text-center hidden lg:table-cell'>" . $user['email'] . "</td>
-                <td class='px-6 py-2 whitespace-nowrap text-center hidden lg:table-cell'>" . $user['level'] . "</td>
+                <td class='px-6 py-2 whitespace-nowrap text-center'>" . $user['email'] . "</td>
+                <td class='px-6 py-2 whitespace-nowrap text-center'>" . $user['level'] . "</td>
                 <td class='px-6 py-2 whitespace-nowrap text-center'>
                   <button type='button' class='bg-sky-100 px-3 rounded-md group'>
                     <i

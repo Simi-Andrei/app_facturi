@@ -1,15 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
 <div class="flex justify-between items-center my-4 px-2">
   <h1 class="text-lg font-semibold text-neutral-500 cursor-default">Setari</h1>
 </div>
 <form action="?page=addSetting" method="POST">
-  <div class="accordion" id="accordionExample5">
-    <div class="accordion-item bg-white border border-gray-200">
-      <h2 class="accordion-header mb-0" id="headingOne5">
+  <div id="accordionExample5">
+    <div class="bg-white border border-gray-200">
+      <h2 class="mb-0" id="headingOne5">
         <button
           class="relative flex items-center w-full py-4 px-5 text-base text-neutral-50 text-left bg-sky-900 border-0 transition-all duration-150 focus:outline-none italic font-semibold hover:bg-sky-800"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseOne5"
+          data-te-collapse-init
+          data-te-target="#collapseOne5"
           aria-expanded="true"
           aria-controls="collapseOne5"
         >
@@ -18,10 +29,12 @@
       </h2>
       <div
         id="collapseOne5"
-        class="accordion-collapse collapse show"
+        class="!visible"
+        data-te-collapse-item
+        data-te-collapse-show
         aria-labelledby="headingOne5"
       >
-        <div class="accordion-body py-4 px-5">
+        <div class="py-4 px-5">
           <div class="bg-sky-50 rounded-md p-2">
             <div class="flex flex-wrap">
               <div
@@ -30,8 +43,9 @@
                 <label for="companyName" class="italic mb-1">Nume firma:</label
                 ><input
                   type="text"
-                  id="companyName"
-                  name="companyName"
+                  id="name"
+                  name="name"
+                  value="{{name}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -43,6 +57,7 @@
                   type="text"
                   id="cui"
                   name="cui"
+                  value="{{cui}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -52,8 +67,9 @@
                 <label for="nrRegCom" class="italic mb-1">Nr. Reg. Com.:</label
                 ><input
                   type="text"
-                  id="nrRegCom"
-                  name="nrRegCom"
+                  id="j"
+                  name="j"
+                  value="{{j}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -64,8 +80,9 @@
                   >Sediu social:</label
                 ><input
                   type="text"
-                  id="sediuSocial"
-                  name="sediuSocial"
+                  id="location"
+                  name="location"
+                  value="{{location}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -73,19 +90,22 @@
                 class="inline-block w-full lg:w-1/3 flex flex-col items-start justify-center p-2"
               >
                 <label for="judet" class="italic mb-1">Judet:</label
-                ><select
-                  id="judet"
+                ><input
+                  type="text"
+                  id="county"
+                  name="county"
+                  value="{{county}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
-                >
-                  <option value="---" disabled>---</option>
-                </select>
+                />
               </div>
               <div
                 class="inline-block w-full lg:w-1/3 flex flex-col items-start justify-center p-2"
               >
                 <label for="tara" class="italic mb-1">Tara:</label
                 ><select
-                  id="tara"
+                  id="country"
+                  name="country"
+                  value="{{country}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 >
                   <option value="romania">Romania</option>
@@ -97,7 +117,9 @@
                 <label for="cont" class="italic mb-1">Cont (IBAN):</label
                 ><input
                   type="text"
-                  id="cont"
+                  id="iban"
+                  name="iban"
+                  value="{{iban}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -108,7 +130,9 @@
                   >Banca/Sucursala:</label
                 ><input
                   type="text"
-                  id="bancaSucursala"
+                  id="bank"
+                  name="bank"
+                  value="{{bank}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -119,8 +143,9 @@
                   >Capital social:</label
                 ><input
                   type="text"
-                  id="capitalSocial"
-                  name="capitalSocial"
+                  id="share_capital"
+                  name="share_capital"
+                  value="{{share_capital}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -129,13 +154,14 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item bg-white border border-gray-200">
-      <h2 class="accordion-header mb-0" id="headingTwo5">
+    <div class="bg-white border border-gray-200">
+      <h2 class="mb-0" id="headingTwo5">
         <button
           class="relative flex items-center w-full py-4 px-5 text-base text-neutral-50 text-left bg-sky-900 border-0 transition-all duration-150 focus:outline-none italic font-semibold hover:bg-sky-800"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseTwo5"
+          data-te-collapse-init
+          data-te-collapse-collapsed
+          data-te-target="#collapseTwo5"
           aria-expanded="false"
           aria-controls="collapseTwo5"
         >
@@ -144,10 +170,11 @@
       </h2>
       <div
         id="collapseTwo5"
-        class="accordion-collapse collapse"
+        class="!visible hidden"
+        data-te-collapse-item
         aria-labelledby="headingTwo5"
       >
-        <div class="accordion-body py-4 px-5">
+        <div class="py-4 px-5">
           <div class="bg-sky-50 rounded-md p-2">
             <div class="flex flex-wrap">
               <div class="w-full">
@@ -158,7 +185,9 @@
                     >Cota T.V.A. (%):</label
                   ><input
                     type="number"
-                    id="cotaTva"
+                    id="vat_rate"
+                    name="vat_rate"
+                    value="{{vat_rate}}"
                     class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                   />
                 </div>
@@ -170,8 +199,9 @@
                   >Serie facturi:</label
                 ><input
                   type="text"
-                  id="serieFacturi"
-                  value="BOS"
+                  id="invoice_series"
+                  name="invoice_series"
+                  value="{{invoice_series}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -181,8 +211,9 @@
                 <label for="numarDeLa" class="italic mb-1">Numar de la:</label
                 ><input
                   type="number"
-                  id="numarDeLa"
-                  value="000001"
+                  id="invoice_start"
+                  name="invoice_start"
+                  value="{{invoice_start}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -192,8 +223,9 @@
                 <label for="panaLa" class="italic mb-1">Pana la:</label
                 ><input
                   type="number"
-                  id="panaLa"
-                  value="009999"
+                  id="invoice_end"
+                  value="{{invoice_end}}"
+                  name="invoice_end"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -204,8 +236,9 @@
                   >Serie chitante:</label
                 ><input
                   type="text"
-                  id="serieChitante"
-                  value="BOS"
+                  id="receipt_series"
+                  value="{{receipt_series}}"
+                  name="receipt_series"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -215,8 +248,9 @@
                 <label for="numarDeLa" class="italic mb-1">Numar de la:</label
                 ><input
                   type="number"
-                  id="numarDeLa"
-                  value="000001"
+                  id="receipt_start"
+                  value="{{receipt_start}}"
+                  name="receipt_start"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -226,8 +260,9 @@
                 <label for="panaLa" class="italic mb-1">Pana la:</label
                 ><input
                   type="number"
-                  id="panaLa"
-                  value="009999"
+                  id="receipt_end"
+                  value="{{receipt_end}}"
+                  name="receipt_end"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -237,22 +272,26 @@
                 <label for="observatii" class="italic mb-1">Observatii:</label
                 ><textarea
                   type="number"
-                  id="observatii"
+                  id="observations"
+                  name="observations"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
-                ></textarea>
+                >
+{{observations}}</textarea
+                >
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="accordion-item bg-white border border-gray-200">
-      <h2 class="accordion-header mb-0" id="headingThree5">
+    <div class="bg-white border border-gray-200">
+      <h2 class="mb-0" id="headingThree5">
         <button
           class="relative flex items-center w-full py-4 px-5 text-base text-neutral-50 text-left bg-sky-900 border-0 transition-all duration-150 focus:outline-none italic font-semibold hover:bg-sky-800"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseThree5"
+          data-te-collapse-init
+          data-te-collapse-collapsed
+          data-te-target="#collapseThree5"
           aria-expanded="false"
           aria-controls="collapseThree5"
         >
@@ -261,10 +300,11 @@
       </h2>
       <div
         id="collapseThree5"
-        class="accordion-collapse collapse"
+        class="!visible hidden"
+        data-te-collapse-item
         aria-labelledby="headingThree5"
       >
-        <div class="accordion-body py-4 px-5">
+        <div class="py-4 px-5">
           <div class="bg-sky-50 rounded-md p-2">
             <div class="flex flex-wrap">
               <div
@@ -274,9 +314,12 @@
                   >Adresa de corespondenta:</label
                 ><textarea
                   type="number"
-                  id="adresaCorespondenta"
+                  id="mailing_address"
+                  name="mailing_address"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
-                ></textarea>
+                >
+{{mailing_address}}</textarea
+                >
               </div>
               <div
                 class="inline-block w-full lg:w-1/3 flex flex-col items-start justify-center p-2"
@@ -284,7 +327,9 @@
                 <label for="telefon" class="italic mb-1">Telefon:</label
                 ><input
                   type="text"
-                  id="telefon"
+                  id="phone"
+                  name="phone"
+                  value="{{phone}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -295,6 +340,8 @@
                 ><input
                   type="text"
                   id="fax"
+                  name="fax"
+                  value="{{fax}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -305,6 +352,8 @@
                 ><input
                   type="text"
                   id="email"
+                  name="email"
+                  value="{{email}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -314,7 +363,9 @@
                 <label for="webPage" class="italic mb-1">Pagina web:</label
                 ><input
                   type="text"
-                  id="webPage"
+                  id="web"
+                  name="web"
+                  value="{{web}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -325,7 +376,9 @@
                   >Persoana de contact:</label
                 ><input
                   type="text"
-                  id="contactPerson"
+                  id="person"
+                  name="person"
+                  value="{{person}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -336,7 +389,9 @@
                   >Functie pers. de contact:</label
                 ><input
                   type="text"
-                  id="contactPersonFunction"
+                  id="position"
+                  name="position"
+                  value="{{position}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -347,7 +402,9 @@
                   >Tel. mobil pers. de contact:</label
                 ><input
                   type="text"
-                  id="contactPersonPhone"
+                  id="mobile"
+                  name="mobile"
+                  value="{{mobile}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>
@@ -358,7 +415,9 @@
                   >Email pers. de contact:</label
                 ><input
                   type="text"
-                  id="contactPersonEmail"
+                  id="emailp"
+                  name="emailp"
+                  value="{{emailp}}"
                   class="w-full py-0.5 px-2 text-sm placeholder:text-sm placeholder:text-neutral-400 placeholder:italic"
                 />
               </div>

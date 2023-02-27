@@ -12,17 +12,18 @@ class AddInvoiceController extends AppController
 
         $invoice = new InvoicesModel();
         $item = new ItemsModel();
+        $client = new ClientsModel();
 
         $series = $_POST['series'];
         $nrFactura = $_POST['number'];
         $emitDate = date('Y-m-d', strtotime($_POST['emitDate']));
         $currency = $_POST['currency'];
 
-        $clientID = 1; // pana cand avem drop down
         $lastInvoiceID = '';
         $value = NULL;
-        $VAT = 19;
         $status = 1;
+        $totalValue = NULL;
+        $totalVat = NULL;
 
         $data['test'] = '';
 
@@ -32,18 +33,44 @@ class AddInvoiceController extends AppController
         for($i=0; $i<$nrProduse; $i++){
             $prodPrice = $_POST['product_price'][$i];
             $prodQty = $_POST['product_qty'][$i];
+            $prodVat = $_POST['product_vat'][$i];
 
             $value += $prodPrice * $prodQty;
+            
+            $totalVat = $value * $prodVat/100;
+
         }
 
+         $totalValue = $value + $totalVat;
+
+
+
+          //client info
+          $clientName = $_POST['clientName'];
+          $clientCUI = $_POST['clientCUI'];
+          $clientJ = $_POST['clientJ'];
+          $clientLocation = $_POST['clientLocation'];
+          $clientIBAN = $_POST['clientIBAN'];
+          $clientContactP = $_POST['clientContactP'];
+          $clientPhone = $_POST['clientPhone'];
+          $clientEmail = $_POST['clientEmail'];
+        //   $clientBank = $_POST['clientBank'];
+        //   $clientJudet = $_POST['clientJudet'];
+
+          if($client->addClient($clientName, $clientCUI, $clientJ, $clientContactP, $clientPhone, $clientEmail, $clientLocation, $clientIBAN)){
+          $clientID = $client->lastClientID()[0][0];}
+          else {$data['test']="n-a mers la client";}
+          
         
 
+        $item_type = $_POST['item_type'];
+        $recruited_job = $_POST['recruited_job'];
+        $agent = $_POST['agent'];
+        $due_date = date("Y-m-d", strtotime($_POST['emitDate'] . "+ 5 days"));
 
-        if($invoice->addInvoice($clientID, $series, $value, $VAT, $currency, $status, $emitDate)){
+        if($invoice->addInvoice($clientID, $series, $value, $totalValue, $currency, $status, $emitDate, $item_type, $recruited_job, $agent, $due_date)){
             $lastInvoiceID = $invoice->lastInvoiceID()[0][0];
         } else $data['test'] = ' n-a mers';
-
-
      
             //ADD ITEMS LOGIC
         // 
@@ -52,10 +79,15 @@ class AddInvoiceController extends AppController
             $prodName = $_POST['product_name'][$i];
             $prodPrice = $_POST['product_price'][$i];
             $prodQty = $_POST['product_qty'][$i];
+            
+            $procentVat = $_POST['product_vat'][$i];
 
-            if($item->addItem($prodName, $lastInvoiceID, $prodPrice, $prodQty))
+            $prodVat = $prodPrice * $procentVat/100 * $prodQty;
+
+            if($item->addItem($prodName, $lastInvoiceID, $prodPrice, $prodVat, $prodQty))
             header('Location: ?page=invoices'); 
-            else {$data['test'] .= "n-a mers";}
+        
+            else {$data['test'] .= "A aparut o eroare";}
         }
 
 
@@ -75,8 +107,8 @@ class AddInvoiceController extends AppController
 
 
 
-        $content["content"] = $this->render(APP_PATH . VIEWS . 'test.html', $data);
-        echo $this->render(APP_PATH . VIEWS . 'boilerplate.html', $content);
+        // $content["content"] = $this->render(APP_PATH . VIEWS . 'test.html', $data);
+        // echo $this->render(APP_PATH . VIEWS . 'boilerplate.html', $content);
         
 
      

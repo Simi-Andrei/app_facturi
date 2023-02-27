@@ -26,6 +26,7 @@ class AddUserController extends AppController
         $data['error'] = '';
 
 
+       if(!$user->checkDoubleUser($userName)){
         if ($user->addUser($name, $userName, $email, $phone, $password, $level)) {
             //show "userul a fost adaugat cu success" for 3 sec 
             //then redirect to "Users" page
@@ -35,6 +36,7 @@ class AddUserController extends AppController
             //then redirect to "Users" page
             $data['error'] = "n-a mers";
         }
+       }  
 
         sleep(2);
         header("Location: ?page=users");

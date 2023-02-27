@@ -16,7 +16,7 @@ class UsersModel extends DBModel
 
 
     public function isAuth($userName, $password){
-        $q = "SELECT * FROM `users` WHERE `username`= ? ";
+        $q = "SELECT `password` FROM `users` WHERE `userName`= ? ";
         $myPrep = $this->db()->prepare($q);
         $myPrep->bind_param("s", $userName);
         $myPrep->execute();
@@ -45,6 +45,15 @@ class UsersModel extends DBModel
         $q = "SELECT * FROM users";
         $result = $this->db()->query($q);
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkDoubleUser($userName){
+        $q = "SELECT `id` FROM `users` WHERE `userName` = ?";
+        $myPrep = $this->db()->prepare($q);
+        $myPrep->bind_param("s", $userName);
+        $myPrep->execute();
+        $result = $myPrep->get_result()->fetch_assoc();
+        return $result;
     }
    
     public function delUser($id){

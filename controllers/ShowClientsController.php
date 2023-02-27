@@ -10,6 +10,15 @@ class ShowClientsController extends AppController
     public function init()
     {
 
+      session_start();
+
+      if(isset($_SESSION['userName'])){
+        $content['userName'] = $_SESSION['userName'];
+    } else {
+      header("Location: ?page=login");
+    }
+    
+
         $client = new ClientsModel;
 
         $result = $client->showClients();
@@ -24,21 +33,21 @@ class ShowClientsController extends AppController
               <td class='px-6 py-2 whitespace-nowrap text-center'>" . $client["name"] . "</td>
               <td class='px-6 py-2 whitespace-nowrap text-center'>" . $client["CUI"] . "</td>
               <td class='px-6 py-2 whitespace-nowrap text-center'>" . $client["J"] . "</td>
-              <td class='px-6 py-2 whitespace-nowrap text-center hidden lg:table-cell'>" . $client["location"] . "</td>
-              <td class='px-6 py-2 whitespace-nowrap text-center hidden lg:table-cell'>" . $client["contactPers"] . "</td>
-              <td class='px-6 py-2 whitespace-nowrap text-center hidden lg:table-cell'>" . $client["name"] . "</td>
-              <td class='px-6 py-2 whitespace-nowrap text-center hidden lg:table-cell'>
-                <a href='?page=editClientForm&id=" . $client["id"] . " ' type='button' class='bg-sky-100 px-3 rounded-md group'>
+              <td class='px-6 py-2 whitespace-nowrap text-center'>" . $client["location"] . "</td>
+              <td class='px-6 py-2 whitespace-nowrap text-center'>" . $client["contactPers"] . "</td>
+              <td class='px-6 py-2 whitespace-nowrap text-center'>" . $client["name"] . "</td>
+              <td class='px-6 py-2 whitespace-nowrap text-center'>
+                <button data-bs-toggle='modal' data-bs-target='#scrollableModal1' type='button' class='bg-sky-100 px-3 rounded-md group'>
                   <i
                     class='fa-solid fa-pen-to-square text-sky-900 text-lg group-hover:text-orange-600 transition-all duration-150'
                   ></i>
-                </a>
+                </button>
               </td>
               <td class='px-6 py-2 whitespace-nowrap text-center'>
-                <button type='button' class='bg-sky-100 px-3 rounded-md group'>
+                <a href='?page=delClient&id= " . $client["id"] .  "' type='button' class='bg-sky-100 px-3 rounded-md group'>
                   <i class='fa-sharp fa-solid fa-trash text-sky-900 text-lg
                   group-hover:text-orange-600 transition-all duration-150'
-                </button>
+                </a>
               </td>
             </tr>";
         }

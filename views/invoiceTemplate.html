@@ -49,61 +49,56 @@
                 <td style="width: 30%; padding: 0 10px">
                   <div class="seller">
                     <p style="margin: 4px 0">
-                      <strong>Furnizor: </strong>BUSINESS OUTSOURCING SOLUTONS
-                      S.R.L. <strong>CIF: </strong>RO35723388
-                    </p>
-
-                    <p style="margin: 4px 0">
-                      <strong>Nr ord reg com: </strong>J40/2907/2016
+                      <strong>Furnizor: </strong>{{settingsName}}
+                      S.R.L. <br>
+                      <strong>CIF: </strong>{{settingsCUI}}
                     </p>
                     <p style="margin: 4px 0">
-                      <strong>Sediu: </strong>Str. Nucului, Nr. 51, Sector 3
+                      <strong>Nr ord reg com: </strong>{{settingsJ}}
                     </p>
                     <p style="margin: 4px 0">
-                      <strong>Judet: </strong>Bucuresti
+                      <strong>Sediu: </strong>{{settingsLocation}}
+                    </p>
+                    <p style="margin: 4px 0">
+                      <strong>Judet: </strong>{{settingsCounty}}
                     </p>
                     <span p style="margin: 4px 0"
-                      ><strong>Cont: </strong>RO32 RZBR 0000 0600 1844
-                      0293</span
+                      ><strong>Cont: </strong>{{settingsIBAN}}</span
                     >
                     <p style="margin: 4px 0">
-                      <strong>Banca: </strong>Raiffeissen Bank
+                      <strong>Banca: </strong>{{settingsBank}}
                     </p>
                     <p style="margin: 4px 0">
-                      <strong>Capital social: </strong>200
+                      <strong>Capital social: </strong>{{settingsCapital}}
                     </p>
                   </div>
                 </td>
                 <td style="width: 30%; padding: 0 10px">
                   <div class="company-logo">
-                    <img
-                      src="../imgs/logo.png"
-                      alt="companyLogo"
-                      width="100%"
-                    />
+                    <h1 style="text-align:center; color:blue">{{settingsName}}</h1>
                   </div>
                 </td>
                 <td style="width: 30%; padding: 0 10px">
                   <div class="buyer">
                     <p style="margin: 4px 0">
-                      <strong>Cumparator: </strong>PPG ROMANIA S.A.
+                      <strong>Cumparator: </strong>{{clientName}}
                     </p>
-                    <p style="margin: 4px 0"><strong>CIF: </strong>RO3540951</p>
+                    <p style="margin: 4px 0"><strong>CIF: </strong>{{clientCUI}}</p>
                     <p style="margin: 4px 0">
-                      <strong>Nr ord reg com: </strong>J40/2907/2016
-                    </p>
-                    <p style="margin: 4px 0">
-                      <strong>Sediu: </strong>Str. Nucului, Nr. 51, Sector 3
+                      <strong>Nr ord reg com: </strong>{{clientJ}}
                     </p>
                     <p style="margin: 4px 0">
-                      <strong>Judet: </strong>Bucuresti
+                      <strong>Sediu: </strong>{{clientLocation}}
                     </p>
+                    <!-- <p style="margin: 4px 0">
+                      <strong>Judet: </strong>{{clientJudet}}
+                    </p> -->
                     <p style="margin: 4px 0">
-                      <strong>Cont: </strong>RO32 RZBR 0000 0600 1844 0293
+                      <strong>Cont: </strong>{{clientIBAN}}
                     </p>
-                    <p style="margin: 4px 0">
-                      <strong>Banca: </strong>Raiffeissen Bank
-                    </p>
+                    <!-- <p style="margin: 4px 0">
+                      <strong>Banca: </strong>{{clientBank}}
+                    </p> -->
                   </div>
                 </td>
               </tr>
@@ -117,11 +112,11 @@
               <tr>
                 <td style="width: 30%"></td>
                 <td style="width: 30%; text-align: center; padding: 0 10px">
-                  <p>SERIE SI NR: <strong>BOS 003256</strong></p>
-                  <p>DATA (zi-luna-an): <strong>23-12-1742</strong></p>
+                  <p>SERIE SI NR: <strong>{{nrSerieFactura}}</strong></p>
+                  <p>DATA (zi-luna-an): <strong>{{emitDate}}</strong></p>
                   <p>
                     Scadenta la:
-                    <strong>28-12-1742</strong>
+                    <strong>{{dueDate}}</strong>
                   </p>
                 </td>
 
@@ -157,99 +152,7 @@
                 <td style="text-align: center">5(3x4)</td>
                 <td style="text-align: center">6</td>
               </tr>
-              <tr>
-                <td style="padding: 8px 0"></td>
-                <td style="padding: 8px 0"></td>
-                <td style="padding: 8px 0"></td>
-                <td style="padding: 8px 0"></td>
-                <td style="padding: 8px 0"></td>
-                <td style="padding: 8px 0"></td>
-                <td style="padding: 8px 0"></td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
-              <tr>
-                <td style="text-align: center">1.</td>
-                <td style="text-align: center">
-                  Servicii cf Contract nr. 2 din 27.03.2019 (Salariu brut +
-                  taxe, cf pontaj luna Decembrie 2002) (19% T.V.A.)
-                </td>
-                <td style="text-align: center">buc.</td>
-                <td style="text-align: center">1.00</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">289.066,72</td>
-                <td style="text-align: center">54.922,68</td>
-              </tr>
+              {{productsTable}}
             </tbody>
             <tfoot>
               <tr>
@@ -269,10 +172,10 @@
                 </td>
                 <td style="padding: 10px 0; padding: 5px">TOTAL:</td>
                 <td style="padding: 10px 0; padding: 5px; text-align: center">
-                  349.967,15
+                  {{value}}
                 </td>
                 <td style="padding: 10px 0; padding: 5px; text-align: center">
-                  66.493,76
+                  {{totalVAT}}
                 </td>
               </tr>
               <tr>
@@ -283,7 +186,7 @@
                   colspan="2"
                   style="padding: 10px 0; padding: 5px; text-align: center"
                 >
-                  <strong>416.460,91</strong>
+                  <strong>{{totalValue}}</strong>
                 </td>
               </tr>
             </tfoot>
@@ -297,4 +200,4 @@
       </div>
     </div>
   </body>
-</html>
+  </html>
